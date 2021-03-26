@@ -1,0 +1,26 @@
+
+<h1>Registered Users</h1>
+<div class="d-flex justify-content-center">
+<div class="spinner-border" role="status" >
+    <span class="sr-only" id="loading">Loading...</span>
+</div>
+</div>
+<table class="table" id='tab'>
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let e of lis; let i = index">
+        <td>{{e._id}}</td>
+        <td>{{e.username}}</td>
+        <td>{{e.email}}</td>
+        <!-- <td>{{ e.position }}</td>
+        <td>{{ e.office }}</td>
+        <td>{{ e.salary }}</td> -->
+    </tr>
+    </tbody>
+</table>   
