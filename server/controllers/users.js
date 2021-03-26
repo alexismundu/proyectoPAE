@@ -7,7 +7,7 @@ class UserController {
                 console.log('Failed fetching users');
                 return;
             };
-            res.send(results);
+            res.send({"users":results});
         });
     }
 
