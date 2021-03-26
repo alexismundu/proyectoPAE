@@ -3,6 +3,7 @@
 ## Installation
 
 - Run `npm i` in the root folder
+- Run `cp .env.example .env` and fill the credentials that you need in order to use the database and other tools
 - Run `cd client && npm i` in the root folder
 
 
