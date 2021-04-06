@@ -12,20 +12,19 @@ export class UsersComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get('http://localhost:3000/users')
-    .subscribe(Response => {
-  
+    this.http.get('http://localhost:3000/users').subscribe((Response) => {
       // If response comes hideloader() function is called
-      // to hide that loader 
-      if(Response){  
+      // to hide that loader
+      if (Response) {
         hideloader();
       }
-      this.li=Response;
-      this.lis=this.li.users
-      console.log(this.li.users)
+      this.li = Response;
+      this.lis = this.li.users;
+      console.log(this.li.users);
     });
-    function hideloader(){
+    function hideloader() {
       // @ts-ignore
       document.getElementById('loading').style.display = 'none';
-  }}
+    }
+  }
 }
