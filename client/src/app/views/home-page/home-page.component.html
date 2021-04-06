@@ -4,10 +4,6 @@
     <span class="sr-only" id="loading">Loading...</span>
 </div>
 
-<div>
-    <div class="book" *ngFor="let book of books">
-        <h4>{{book.title}}</h4>
-        <p class="brief-description">{{book.description}}</p>
-        <img src={{book.previewUrl}}>
-    </div>
+<div class="book-list">
+    <app-book-list [books]="books"></app-book-list>
 </div>

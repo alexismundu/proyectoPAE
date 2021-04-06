@@ -1,0 +1,15 @@
+.book {
+    width: 100%;
+    img {
+        width: 100px;
+    }
+}
+
+.description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
