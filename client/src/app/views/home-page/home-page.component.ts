@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from 'src/app/services/session.service';
 
 import { Book } from './home-page.component.type';
 @Component({
@@ -9,19 +10,20 @@ import { Book } from './home-page.component.type';
 })
 export class HomePageComponent implements OnInit {
   books: Book[] | [] = [];
-  constructor(private http: HttpClient) {
-    this.http.get('../../../assets/libros.json').subscribe((response: any) => {
-      if (response) {
-        hideloader();
-      }
-      this.books = response.data;
-      console.log(this.books);
+  constructor(private session: SessionService) {
+    this.session.getBooks().subscribe({
+      next: this.handleGetBooks.bind(this),
+      error: this.handleGetBooksError,
     });
-    function hideloader() {
-      let loading: any = document.getElementById('loading');
-      if (loading) loading.style.display = 'none';
-    }
   }
 
   ngOnInit(): void {}
+
+  handleGetBooks(response: any) {
+    this.books = response.data;
+  }
+
+  handleGetBooksError(e: string) {
+    console.log('BookDetails error: ', e);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SessionService } from 'src/app/services/session.service';
 import { Book } from 'src/app/views/home-page/home-page.component.type';
 
 @Component({
@@ -9,7 +10,11 @@ import { Book } from 'src/app/views/home-page/home-page.component.type';
 export class BookListItemComponent implements OnInit {
   @Input() book: Book | null = null;
 
-  constructor() {}
+  constructor(private session: SessionService) {}
 
   ngOnInit(): void {}
+
+  setCurrentBook(book: Book) {
+    this.session.setCurrentBook(book);
+  }
 }

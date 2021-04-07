@@ -9,6 +9,8 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { BookListItemComponent } from './components/book-list-item/book-list-item.component';
+import { BookDetailsComponent } from './views/book-details/book-details.component';
+import { SessionService } from './services/session.service';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { BookListItemComponent } from './components/book-list-item/book-list-ite
     HomePageComponent,
     BookListComponent,
     BookListItemComponent,
+    BookDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  providers: [SessionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
