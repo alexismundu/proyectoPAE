@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Book } from '../views/home-page/home-page.component.type';
+import { Book } from '../views/book-details/book-details.component.type';
+import { Movie } from '../views/movie-details/movie-details.component.type';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class SessionService {
   currentBook: Book | null = null;
+  currentMovie: Movie | null = null;
   constructor(private http: HttpClient) {}
 
   setCurrentBook(book: Book) {
@@ -20,5 +22,17 @@ export class SessionService {
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>('assets/libros.json');
+  }
+
+  setCurrentMovie(movie: Movie) {
+    this.currentMovie = movie;
+  }
+
+  getCurrentMovie() {
+    return this.currentMovie;
+  }
+
+  getMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>('assets/peliculas.json');
   }
 }
