@@ -1,12 +1,12 @@
 const express = require('express');
-const { UsersController, BooksController } = require('./../server/controllers');
+const { UsersController, BooksController, MoviesController } = require('./../server/controllers');
 
 const router = express.Router();
 
-router.get('/', UsersController.getAll);
-router.post('/', UsersController.create);
-router.put('/:email',  UsersController.update);
-router.get('/:email', UsersController.getOne);
-router.delete('/:email', UsersController.remove);
+router.get('/db', UsersController.getAll);
+router.post('/db', UsersController.create);
+router.put('/db/:email',  UsersController.update);
+router.get('/db/:email', UsersController.getOne);
+router.delete('/db/:email', UsersController.remove);
 
 module.exports = router;

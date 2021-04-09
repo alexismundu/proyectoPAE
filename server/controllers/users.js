@@ -2,6 +2,7 @@ const User = require('./../models/user');
 
 class UsersController {
     getAll(req, res) {
+        console.log("getting all");
         User.find()
             .then(users => {
                 res.statusCode = 200;
@@ -14,6 +15,8 @@ class UsersController {
     }
 
     async create(req, res) {
+        console.log("creating...");
+
         let newUser = req.body;
 
         if (!req.body.email || !req.body.password || !req.body.name || !req.body.last_name) {
@@ -100,6 +103,8 @@ class UsersController {
     }
 
     getOne(req, res) {
+        console.log("getting one");
+
         User.findOne({
                 email: req.params.email
             })
