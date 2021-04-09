@@ -9,6 +9,7 @@ class UsersController {
                 res.send(users);
             })
             .catch(reason => {
+                console.log(reason);
                 res.statusCode = 500;
                 res.end();
             });
@@ -19,10 +20,6 @@ class UsersController {
 
         let newUser = req.body;
 
-        if (!req.body.email || !req.body.password || !req.body.name || !req.body.last_name) {
-            res.end('Some fields are missing');
-            return;
-        }
         // Validar if this is an existing user (by email or name)
         let sameEmailUser = await User.find({
             email: newUser.email
@@ -58,10 +55,6 @@ class UsersController {
 
     async update(req, res) {
         //email CANNOT BE EDITED
-        if (!req.body.password || !req.body.name || !req.body.last_name) {
-            res.end('Some fields are missing');
-            return;
-        }
         let sameNameAndLastName = await User.findOne({
             name: req.body.name,
             last_name: req.body.last_name
@@ -103,8 +96,7 @@ class UsersController {
     }
 
     getOne(req, res) {
-        console.log("getting one");
-
+        console.log("getting one user");
         User.findOne({
                 email: req.params.email
             })
@@ -125,7 +117,7 @@ class UsersController {
             })
             .then(user => {
                 res.statusCode = 200;
-                res.send("user deleted");
+                res.send(user);
             })
             .catch(reason => {
                 res.statusCode = 500;
