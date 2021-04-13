@@ -19,8 +19,8 @@ export class UsersComponent implements OnInit {
         hideloader();
       }
       this.li = Response;
-      this.lis = this.li.users;
-      console.log(this.li.users);
+      this.lis = this.li;
+      console.log(this.li);
     });
     function hideloader() {
       // @ts-ignore
