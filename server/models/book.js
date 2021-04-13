@@ -1,6 +1,10 @@
 const mongoose = require('./database')
 
 let bookSchema = mongoose.Schema({
+    id: {
+        type: String,
+        required: true
+    },
     publishedDate: {
         type: String,
     },
@@ -12,19 +16,25 @@ let bookSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    authors: {
+        type: Array
+    },
     categories: {
         type: Array,
     },
     language: {
         type: String,
     },
-    previewURL: {
+    previewLink: {
+        type: String,
+    },
+    imageLink: {
         type: String,
     },
     pageCount: {
         type: Number,
     },
-    rating: {
+    averageRating: {
         type: Number
     }
 
