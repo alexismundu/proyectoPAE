@@ -1,6 +1,10 @@
 const mongoose = require('./database')
 
 let userSchema = mongoose.Schema({
+    id: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -15,10 +19,6 @@ let userSchema = mongoose.Schema({
     },
     registered_date: {
         type: Date,
-        required: true
-    },
-    password: {
-        type: String,
         required: true
     },
     age: {
