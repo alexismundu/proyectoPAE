@@ -1,4 +1,4 @@
-<form [formGroup]=form (submit)="signUp()">
+<form [formGroup]="form" (submit)="signUp()">
     <div>
         <label for="name">Nombre:</label>
         <input type="text" name="name" formControlName="name">
@@ -28,6 +28,6 @@
         <input type="file" name="img" formControlName="img">
     </div>
     <div>
-        <button [appClick]>Crear Usuario</button>
+        <button type="submit">Crear Usuario</button>
     </div>
 </form>

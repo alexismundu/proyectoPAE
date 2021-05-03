@@ -18,12 +18,16 @@ export class SignUpComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
       last_name: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required, Validators.minLength(6)],
-      password_confirm: ['', Validators.required, Validators.minLength(6)],
-      age: ['', Validators.required, Validators.min(1)]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password_confirm: ['', [Validators.required, Validators.minLength(6)]],
+      age: ['', [Validators.required, Validators.min(1)]],
+      img: ['']
     }, {
       validators: () => {
+        if(!this.form) {
+          return null
+        }
         if(this.form.controls.password.value == this.form.controls.password_confirm.value) {
           return null
         } else {
