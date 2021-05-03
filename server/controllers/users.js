@@ -16,6 +16,9 @@ class UsersController {
     }
 
     async create(req, res) {
+        // Nombre de Img
+        imgName = req.file.originalname // Guardar img en DB
+
         console.log("creating...");
 
         let newUser = req.body;
