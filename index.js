@@ -12,7 +12,11 @@ const swaggerJSDoc = require("swagger-jsdoc");
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const User = require('./server/models/user')
+const User = require('./server/models/user');
+const {Server} = require('socket.io');
+const http = require('http');
+
+
 
 const app = express();
 
@@ -47,6 +51,26 @@ routes(app);
 //swagger
 const swaggerDoc = swaggerJSDoc(swaggerOptions);
 app.use('/swagger', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+      origin: 'http://localhost:4200',
+      methods: ['GET', 'POST'],
+      //allowHeaders: ['Message'],
+      //credentials: true,
+  }
+});
+
+
+io.on('connection', socket => {
+  console.log("user connected");
+  socket.on('message', (msg) => {
+    console.log('message: ' + msg);
+    socket.broadcast.emit('message-broadcars', msg);
+  });
+});
 
 
 
