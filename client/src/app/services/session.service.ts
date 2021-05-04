@@ -38,7 +38,7 @@ export class SessionService {
   }
 
   signUp(data:any):Promise<any> {
-    const url = `${environment.apiUrl}db`;
+    const url = `${environment.apiUrl}users/db`;
     return this.http.post(url, data).toPromise();
   }
 }

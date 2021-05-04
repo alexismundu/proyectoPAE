@@ -25,7 +25,7 @@
     </div>
     <div>
         <label for="img">Imagen:</label>
-        <input type="file" name="img" formControlName="img">
+        <input type="file" name="img" (change)="onFileSelect($event)" >
     </div>
     <div>
         <button type="submit">Crear Usuario</button>

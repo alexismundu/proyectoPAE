@@ -22,7 +22,7 @@ export class SignUpComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       password_confirm: ['', [Validators.required, Validators.minLength(6)]],
       age: ['', [Validators.required, Validators.min(1)]],
-      img: ['']
+      img: [null]
     }, {
       validators: () => {
         if(!this.form) {
@@ -41,13 +41,30 @@ export class SignUpComponent implements OnInit {
 
   signUp() {
     console.log(this.form)
+    const formData = new FormData();
+    
+    formData.append('img', this.form.get('img').value);
+    formData.append('name', this.form.get('name').value);
+    formData.append('last_name', this.form.get('last_name').value);
+    formData.append('email', this.form.get('email').value);
+    formData.append('password', this.form.get('password').value);
+    formData.append('password_confirm', this.form.get('password_confirm').value);
+    formData.append('age', this.form.get('age').value);
+
     if(this.form.valid) {
-      console.log(this.form)
-      this.sessionService.signUp(this.form.getRawValue()).then().catch(err => {
-        console.error('Failed to signup user', err);
+      //this.sessionService.signUp(this.form.getRawValue()).then().catch(err => {
+      this.sessionService.signUp(formData).then().catch(err => {
+          console.error('Failed to signup user', err);
       });
     } else {
       console.log('Fallaron las validaciones')
+    }
+  }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.form.get('img').setValue(file);
     }
   }
 }
