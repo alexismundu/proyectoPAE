@@ -4,7 +4,7 @@
       </ul>
     </div>
     <div class="chat-messages-create-container"> 
-      <input class="chat-messages-create-input" type="text">
-      <button  class="chat-messages-create-button" (click)="SendMessage()"> Send </button>
+      <input class="chat-messages-create-input" placeholder="Mensaje" type="text" [(ngModel)]="message">
+      <button  class="chat-messages-create-button" (click)="SendMessage()"> Enviar mensaje</button>
     </div>
  </div>
