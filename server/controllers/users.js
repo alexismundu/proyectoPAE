@@ -16,9 +16,14 @@ class UsersController {
     }
 
     async create(req, res) {
+        // Nombre de Img
+        let imgName = req.file.originalname // Guardar img en DB
+
         console.log("creating...");
 
         let newUser = req.body;
+        newUser['profileURL'] = imgName
+        newUser['id'] = newUser.email
 
         // Validar if this is an existing user (by email or name)
         let sameEmailUser = await User.find({

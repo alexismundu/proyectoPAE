@@ -5,6 +5,26 @@ const {
     MoviesController
 } = require('./../server/controllers');
 const router = express.Router();
+const multer = require('multer')
+
+
+const multerStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/images')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    }
+})
+
+const fileFilter = (req, file, cb) => {
+    const flag = file.mimetype.startsWith('image')
+    cb(null, flag)
+}
+const uploadFile = multer({
+    storage: multerStorage,
+    fileFilter: fileFilter
+})
 
 /**
  * @swagger
@@ -64,7 +84,7 @@ router.get('/db', UsersController.getAll);
  *          500:
  *              description: error call to the endpoint 
  */
-router.post('/db', UsersController.create);
+router.post('/db', uploadFile.single('img'), UsersController.create);
 
 /**
  * @swagger
