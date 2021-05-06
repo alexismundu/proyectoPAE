@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SocketIoService } from './services/socket-io.service'
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+  socketIoService: any;
+
+
+  ongOnInit() {
+    const message = "hello world";
+    this.socketIoService.connect(message, () => {
+      console.log('client connected');
+      console.log(message);
+
+    });
+
+
+
+  }
 }

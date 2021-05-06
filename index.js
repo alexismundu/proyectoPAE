@@ -12,9 +12,14 @@ const swaggerJSDoc = require("swagger-jsdoc");
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const User = require('./server/models/user')
+const User = require('./server/models/user');
+const {Server} = require('socket.io');
+const http = require('http');
+
 
 const app = express();
+
+const server = http.createServer(app);
 
 app.use(express.urlencoded());
 app.use(bodyParser.json());
@@ -103,9 +108,23 @@ app.get('/auth/google/callback',
   function (req, res) {
     req.session.userId = req.user.id;
     console.log(req.headers)
-    res.redirect('http://localhost:4200');
+    res.redirect(process.env.CLIENT_URL);
   });
 
-app.listen(port, () => {
-  console.log(`App is running in port ${port}`);
+const io = new Server(server, {
+  cors: {
+      origin: process.env.CLIENT_URL,
+      methods: ['GET', 'POST'],
+  }
+});
+
+io.on('connection', (socket) => { 
+  console.log('[*] A client got connected to socket server!');
+  socket.on('message', (msg) => {
+    console.log(`[+] Client ${socket.id} sent: ${msg}`);
+  });
+});
+
+server.listen(process.env.PORT, () => {
+  console.log(`[*] Sucessfully listening on port ${process.env.PORT}`);
 });
