@@ -4,8 +4,8 @@ export interface Movie {
   releaseDate: string;
   thumbnailURL: string;
   language: string;
-  description: string;
-  rating: number;
+  overview: string;
+  vote_average: number;
   comments: [
     {
       userId: string;

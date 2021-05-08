@@ -25,16 +25,16 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleGetBooks(response: any) {
-    this.books = response.data;
+  handleGetBooks(data: any) {
+    this.books = data.length > 10 ? data.slice(0, 10) : data;
   }
 
   handleGetBooksError(e: string) {
     console.log('BookDetails error: ', e);
   }
 
-  handleGetMovies(response: any) {
-    this.movies = response.data;
+  handleGetMovies(data: any) {
+    this.movies = data.length > 10 ? data.slice(0, 10) : data;
   }
 
   handleGetMoviesError(e: string) {

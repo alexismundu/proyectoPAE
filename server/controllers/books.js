@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 class BooksController {
 
     getAll(req, res) {
-        console.log("get all...");
+        console.log("get all books...");
         Book.find()
             .then(books => {
                 res.statusCode = 200;
@@ -48,8 +48,8 @@ class BooksController {
         console.log("get one book...");
 
         Book.findOne({
-                id: req.params.id
-            })
+            id: req.params.id
+        })
             .then(book => {
                 if (book) {
                     console.log("book found in DB");
@@ -104,8 +104,8 @@ class BooksController {
     remove(req, res) {
         console.log("deleting...");
         Book.deleteOne({
-                id: req.params.id
-            })
+            id: req.params.id
+        })
             .then(book => {
                 res.statusCode = 200;
                 res.send("book deleted");
@@ -123,6 +123,7 @@ class BooksController {
             .then(response => response.text())
             .then(response => {
                 var responseJson = JSON.parse(response);
+                console.log(response);
                 var books = responseJson.items;
                 var bookModels = books.map((book) => {
                     return {
@@ -152,32 +153,32 @@ class BooksController {
         let keyword = req.params.keyword;
         const url = `https://www.googleapis.com/books/v1/volumes?q=${keyword}`;
         fetch(url)
-        .then(response => response.text())
-        .then(response => {
-            var responseJson = JSON.parse(response);
-            var books = responseJson.items;
-            var bookModels = books.map((book) => {
-                return {
-                    'id': book.id,
-                    'publishedDate': book.volumeInfo.publishedDate,
-                    'description': book.volumeInfo.description,
-                    'title': book.volumeInfo.title,
-                    'authors': book.volumeInfo.authors,
-                    'pageCount': book.volumeInfo.pageCount,
-                    'categories': book.volumeInfo.categories,
-                    'previewLink': book.volumeInfo.previewLink,
-                    'language': book.volumeInfo.language,
-                    'averageRating': book.volumeInfo.averageRating,
-                    'imageLink': book.volumeInfo.imageLinks.thumbnail
-                };
-            })
-            res.statusCode = 200;
-            res.send(bookModels);
-        }).catch(err => {
-            console.log(err);
-            res.statusCode = 500;
-            res.end('Failure fetching books from API')
-        });
+            .then(response => response.text())
+            .then(response => {
+                var responseJson = JSON.parse(response);
+                var books = responseJson.items;
+                var bookModels = books.map((book) => {
+                    return {
+                        'id': book.id,
+                        'publishedDate': book.volumeInfo.publishedDate,
+                        'description': book.volumeInfo.description,
+                        'title': book.volumeInfo.title,
+                        'authors': book.volumeInfo.authors,
+                        'pageCount': book.volumeInfo.pageCount,
+                        'categories': book.volumeInfo.categories,
+                        'previewLink': book.volumeInfo.previewLink,
+                        'language': book.volumeInfo.language,
+                        'averageRating': book.volumeInfo.averageRating,
+                        'imageLink': book.volumeInfo.imageLinks.thumbnail
+                    };
+                })
+                res.statusCode = 200;
+                res.send(bookModels);
+            }).catch(err => {
+                console.log(err);
+                res.statusCode = 500;
+                res.end('Failure fetching books from API')
+            });
     }
 }
 

@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 const dotenv = require('dotenv');
 dotenv.config();
 const key = process.env.MOVIEAPIKEY || "";
+const baseThumbnailURL = 'https://image.tmdb.org/t/p/original';
 class MoviesController {
 
     getAll(req, res) {
@@ -11,6 +12,7 @@ class MoviesController {
             .then(movies => {
                 res.statusCode = 200;
                 res.send(movies);
+                res.end();
             })
             .catch(reason => {
                 res.statusCode = 500;
@@ -50,8 +52,8 @@ class MoviesController {
         console.log("get one movie...");
 
         Movie.findOne({
-                id: req.params.id
-            })
+            id: req.params.id
+        })
             .then(movie => {
                 if (movie) {
                     console.log("movie found in DB");
@@ -70,8 +72,10 @@ class MoviesController {
                                 'overview': movie.overview,
                                 'title': movie.title,
                                 'original_language': movie.original_language,
+                                'thumbnailURL': `${baseThumbnailURL}${movie.poster_path}`,
+                                'popularity': movie.popularity,
                                 'vote_average': movie.vote_average,
-                                'thumbnailURL': movie.thumbnailURL
+                                'vote_count': movie.vote_count
                             };
                             //save in DB
                             let movieDocument = Movie(movieModel);
@@ -102,8 +106,8 @@ class MoviesController {
     remove(req, res) {
         console.log("deleting movie...");
         Movie.deleteOne({
-                id: req.params.id
-            })
+            id: req.params.id
+        })
             .then(movie => {
                 res.statusCode = 200;
                 res.send("movie deleted");
@@ -121,7 +125,11 @@ class MoviesController {
             .then(response => response.text())
             .then(response => {
                 var responseJson = JSON.parse(response);
-                var movies = responseJson.items;
+                var movies = responseJson.results;
+                if (movies === undefined) {
+                    throw Error('Movies undefined');
+                }
+                movies.length > 10
                 var movieModels = movies.map((movie) => {
                     return {
                         'id': movie.id,
@@ -129,8 +137,10 @@ class MoviesController {
                         'overview': movie.overview,
                         'title': movie.title,
                         'original_language': movie.original_language,
+                        'thumbnailURL': `${baseThumbnailURL}${movie.poster_path}`,
+                        'popularity': movie.popularity,
                         'vote_average': movie.vote_average,
-                        'thumbnailURL': movie.thumbnailURL
+                        'vote_count': movie.vote_count
                     };
                 })
                 res.statusCode = 200;
@@ -157,8 +167,10 @@ class MoviesController {
                         'overview': movie.overview,
                         'title': movie.title,
                         'original_language': movie.original_language,
+                        'thumbnailURL': `${baseThumbnailURL}${movie.poster_path}`,
+                        'popularity': movie.popularity,
                         'vote_average': movie.vote_average,
-                        'thumbnailURL': movie.thumbnailURL
+                        'vote_count': movie.vote_count
                     };
                 })
                 res.statusCode = 200;

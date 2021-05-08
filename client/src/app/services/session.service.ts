@@ -22,7 +22,7 @@ export class SessionService {
   }
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>('assets/libros.json');
+    return this.http.get<Book[]>(`${environment.apiUrl}/books/api`);
   }
 
   setCurrentMovie(movie: Movie) {
@@ -34,11 +34,11 @@ export class SessionService {
   }
 
   getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>('assets/peliculas.json');
+    return this.http.get<Movie[]>(`${environment.apiUrl}/movies/api`);
   }
 
-  signUp(data:any):Promise<any> {
-    const url = `${environment.apiUrl}users/db`;
+  signUp(data: any): Promise<any> {
+    const url = `${environment.apiUrl}/users/db`;
     return this.http.post(url, data).toPromise();
   }
 }
