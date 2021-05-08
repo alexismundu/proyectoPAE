@@ -34,7 +34,7 @@ export class MovieDetailsComponent implements OnInit {
 
   handleGetMovies(response: any) {
     const possibleMovie: Movie | undefined = response.data.find(
-      (movie: Movie) => movie._id === this.movieIdFromRoute
+      (movie: Movie) => movie.id === this.movieIdFromRoute
     );
     if (possibleMovie) {
       this.movie = possibleMovie;

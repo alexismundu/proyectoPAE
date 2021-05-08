@@ -1,5 +1,5 @@
 <div class="movie" *ngIf="movie">
-    <a [title]="movie.title + ' details'" [routerLink]="['/movies', movie._id]" (click)="setCurrentMovie(movie)">
+    <a [title]="movie.title + ' details'" [routerLink]="['/movies', movie.id]" (click)="setCurrentMovie(movie)">
         <h4>{{movie.title}}</h4>
     </a>
     <p class="description">{{movie.overview}}</p>

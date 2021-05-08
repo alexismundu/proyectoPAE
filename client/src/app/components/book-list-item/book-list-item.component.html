@@ -1,5 +1,5 @@
 <div class="book" *ngIf="book">
-    <a [title]="book.title + ' details'" [routerLink]="['/books', book._id]" (click)="setCurrentBook(book)">
+    <a [title]="book.title + ' details'" [routerLink]="['/books', book.id]" (click)="setCurrentBook(book)">
         <h4>{{book.title}}</h4>
     </a>
     <p class="description">{{book.description}}</p>

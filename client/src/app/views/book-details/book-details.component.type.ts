@@ -1,13 +1,15 @@
 export interface Book {
   _id: string;
+  id: string;
   title: string;
   categories: string[];
   description: string;
   publishedDate: string;
   language: string;
   imageLink: string;
+  previewLink : string,
   authors: string[];
-  rating: number;
+  averageRating: number;
   pageCount: number;
   comments: [
     {

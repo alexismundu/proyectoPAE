@@ -1,9 +1,10 @@
 export interface Movie {
   _id: string;
+  id: string;
   title: string;
-  releaseDate: string;
+  release_date: string;
   thumbnailURL: string;
-  language: string;
+  original_language: string;
   overview: string;
   vote_average: number;
   comments: [

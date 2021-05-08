@@ -2,7 +2,7 @@ const mongoose = require('./database')
 
 let movieSchema = mongoose.Schema({
     id: {
-        type: Number,
+        type: String,
         required: true
     },
     release_date: {

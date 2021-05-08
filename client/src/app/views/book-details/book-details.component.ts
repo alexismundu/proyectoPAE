@@ -34,7 +34,7 @@ export class BookDetailsComponent implements OnInit {
 
   handleGetBooks(response: any) {
     const possibleBook: Book | undefined = response.data.find(
-      (book: Book) => book._id === this.bookIdFromRoute
+      (book: Book) => book.id === this.bookIdFromRoute
     );
     if (possibleBook) {
       this.book = possibleBook;
