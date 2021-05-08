@@ -1,6 +1,6 @@
 <div *ngIf="movie; else elseBlock">
     <h3>{{movie.title}} Details</h3>
-    <p>{{movie.description}}</p>
+    <p>{{movie.overview}}</p>
     <img src={{movie.thumbnailURL}}>
 </div>
 <ng-template #elseBlock>No movie found</ng-template>

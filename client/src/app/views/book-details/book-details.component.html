@@ -1,6 +1,6 @@
 <div *ngIf="book; else elseBlock">
     <h3>{{book.title}} Details</h3>
     <p>{{book.description}}</p>
-    <img src={{book.previewUrl}}>
+    <img src={{book.imageLink}}>
 </div>
 <ng-template #elseBlock>No book found</ng-template>

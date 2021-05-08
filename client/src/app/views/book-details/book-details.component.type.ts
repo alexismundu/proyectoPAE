@@ -5,7 +5,7 @@ export interface Book {
   description: string;
   publishedDate: string;
   language: string;
-  previewUrl: string;
+  imageLink: string;
   authors: string[];
   rating: number;
   pageCount: number;

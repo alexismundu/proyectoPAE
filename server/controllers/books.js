@@ -123,7 +123,6 @@ class BooksController {
             .then(response => response.text())
             .then(response => {
                 var responseJson = JSON.parse(response);
-                console.log(response);
                 var books = responseJson.items;
                 var bookModels = books.map((book) => {
                     return {
