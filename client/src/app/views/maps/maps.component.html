@@ -1,0 +1,12 @@
+<google-map height="500px" width="100%" [zoom]="zoom" [center]="center">
+  <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title"
+    [options]="marker.options" (mapClick)="openInfo(marker)">
+  </map-marker>
+
+</google-map>
+
+<button (click)="addMarker()"><h3>Find libraries that have this book</h3></button>
+<div class="infoDiv">
+<h4 style="width: 500px;white-space: pre-line">{{ infoContent }}</h4>
+<img style="height:130px;" src='{{googleImage}}'>
+</div>

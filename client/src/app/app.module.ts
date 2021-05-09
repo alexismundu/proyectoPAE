@@ -19,6 +19,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClickDirective } from './directives/click.directive';
+import { MapsComponent } from './views/maps/maps.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { ClickDirective } from './directives/click.directive';
     LoginComponent,
     SignUpComponent,
     ClickDirective,
+    MapsComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { ClickDirective } from './directives/click.directive';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    GoogleMapsModule
   ],
   providers: [SessionService],
   bootstrap: [AppComponent],

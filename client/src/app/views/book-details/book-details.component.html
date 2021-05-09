@@ -2,5 +2,6 @@
     <h3>{{book.title}} Details</h3>
     <p>{{book.description}}</p>
     <img src={{book.imageLink}}>
+    <a [routerLink]="['/maps']" >Find book</a>
 </div>
 <ng-template #elseBlock>No book found</ng-template>

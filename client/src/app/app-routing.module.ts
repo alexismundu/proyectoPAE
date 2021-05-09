@@ -7,10 +7,12 @@ import { BookDetailsComponent } from './views/book-details/book-details.componen
 import { MovieDetailsComponent } from './views/movie-details/movie-details.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LoginComponent } from './components/login/login.component';
+import { MapsComponent } from './views/maps/maps.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'books/:id', component: BookDetailsComponent },
+  { path: 'maps', component: MapsComponent },
   { path: 'movies/:id', component: MovieDetailsComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
