@@ -10,7 +10,6 @@ let bookSchema = mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
     },
     title: {
         type: String,
