@@ -23,6 +23,12 @@ let movieSchema = mongoose.Schema({
     },
     vote_average: {
         type: Number
+    },
+    vote_count: {
+        type: Number
+    },
+    popularity: {
+        type: Number
     }
 });
 

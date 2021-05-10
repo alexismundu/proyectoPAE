@@ -11,37 +11,28 @@ import { Book } from 'src/app/views/book-details/book-details.component.type';
   styleUrls: ['./book-details.component.scss'],
 })
 export class BookDetailsComponent implements OnInit {
-  book: Book | null = this.session.getCurrentBook();
+  book: Book | null;
   bookIdFromRoute: string | null;
+  rating: boolean[] = [];
 
   constructor(private route: ActivatedRoute, private session: SessionService) {
     const routeParams = this.route.snapshot.paramMap;
     this.bookIdFromRoute = routeParams.get('id');
-  }
-
-  ngOnInit() {
-    console.log('ngInit: ', this.book);
-    if (
-      this.book === null ||
-      this.bookIdFromRoute !== this.session.currentBook?._id
-    ) {
-      this.session.getBooks().subscribe({
-        next: this.handleGetBooks.bind(this),
-        error: this.handleGetBooksError,
+    const currentBook = this.session.getCurrentBook();
+    this.book = currentBook;
+    if (this.book === null)
+      this.session.getBook(this.bookIdFromRoute).subscribe((book) => {
+        this.book = book;
+        this.calculateRating();
       });
-    }
+    else this.calculateRating();
   }
 
-  handleGetBooks(response: any) {
-    const possibleBook: Book | undefined = response.data.find(
-      (book: Book) => book.id === this.bookIdFromRoute
-    );
-    if (possibleBook) {
-      this.book = possibleBook;
-    }
-  }
+  ngOnInit() {}
 
-  handleGetBooksError(e: string) {
-    console.log('BookDetails error: ', e);
+  calculateRating() {
+    for (let i = 1; i <= 5; i += 1) {
+      this.rating.push(i <= this.book.averageRating);
+    }
   }
 }

@@ -1,7 +1,9 @@
-<div class="movie" *ngIf="movie">
-    <a [title]="movie.title + ' details'" [routerLink]="['/movies', movie.id]" (click)="setCurrentMovie(movie)">
-        <h4>{{movie.title}}</h4>
-    </a>
-    <p class="description">{{movie.overview}}</p>
-    <img src={{movie.thumbnailURL}}>
-</div>
+<a [title]="movie.title + ' details'" [routerLink]="['/movies', movie.id]" (click)="setCurrentMovie(movie)">
+    <div class="movie" *ngIf="movie">
+        <img src={{movie.thumbnailURL}}>
+        <div class='right-side-content'>
+            <h4>{{movie.title}}</h4>
+            <p class="description">{{movie.overview}}</p>
+        </div>
+    </div>
+</a>

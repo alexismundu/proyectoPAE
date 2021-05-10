@@ -1,7 +1,9 @@
-<div class="book" *ngIf="book">
-    <a [title]="book.title + ' details'" [routerLink]="['/books', book.id]" (click)="setCurrentBook(book)">
-        <h4>{{book.title}}</h4>
-    </a>
-    <p class="description">{{book.description}}</p>
-    <img src={{book.imageLink}}>
-</div>
+<a [title]="book.title + ' details'" [routerLink]="['/books', book.id]" (click)="setCurrentBook(book)">
+    <div class="book" *ngIf="book">
+        <img src={{book.imageLink}}>
+        <div class="right-side-content">
+            <h4>{{book.title}}</h4>
+            <p *ngIf="book.description" class="description">{{book.description}}</p>
+        </div>
+    </div>
+</a>

@@ -1,18 +1,18 @@
-<h3>Home Page</h3>
-
-<div class="book-list" *ngIf="books; else elseBlock">
-    <app-book-list [books]="books" ></app-book-list>
+<div class="container">
+    <div class="book-list" *ngIf="books; else elseBlock">
+        <app-book-list [books]="books" ></app-book-list>
+    </div>
+    
+    <div class="content">
+        <p>Aquí van a ir las notificaciones o el chat</p>
+    </div>
+    
+    <div class="movie-list" *ngIf="movies; else elseBlock">
+        <app-movie-list [movies]="movies" ></app-movie-list>
+    </div>
+    
+    
+    <ng-template class="spinner-border" #elseBlock >
+        <span class="sr-only" id="loading">Loading...</span>
+    </ng-template>
 </div>
-
-<div class="content">
-    <p>Contenido de inicio</p>
-</div>
-
-<div class="movie-list" *ngIf="movies; else elseBlock">
-    <app-movie-list [movies]="movies" ></app-movie-list>
-</div>
-
-
-<ng-template class="spinner-border" #elseBlock >
-    <span class="sr-only" id="loading">Loading...</span>
-</ng-template>

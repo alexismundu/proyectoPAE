@@ -1,6 +1,6 @@
 
 :host {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Roboto,-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   color: #333;
   box-sizing: border-box;
@@ -29,9 +29,21 @@ p {
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #1976d2;
+  background-color: #1d3557;
   color: white;
   font-weight: 600;
+  padding: 0 5%;
+
+  .home-icon{
+    color: white;
+    margin-right: 5px;
+  }
+
+  .app-name{
+    color:white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:xx-large;
+  }
 }
 
 .toolbar img {
@@ -187,7 +199,7 @@ a:hover {
 }
 
 .terminal pre {
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-family: Roboto, SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   color: white;
   padding: 0 1rem 1rem;
   margin: 0;
@@ -236,7 +248,7 @@ footer a {
   background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
   margin-left: 4px;
   font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 }
 
 .github-star-badge:hover {
