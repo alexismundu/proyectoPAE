@@ -7,6 +7,8 @@ export interface Movie {
   original_language: string;
   overview: string;
   vote_average: number;
+  vote_count: number;
+  popularity: number;
   comments: [
     {
       userId: string;
