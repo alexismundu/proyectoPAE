@@ -22,6 +22,8 @@ import { ClickDirective } from './directives/click.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { MapsComponent } from './views/maps/maps.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { MatChipsModule } from '@angular/material/chips';
     LoginComponent,
     SignUpComponent,
     ClickDirective,
+    MapsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { MatChipsModule } from '@angular/material/chips';
     BrowserAnimationsModule,
     MatIconModule,
     MatChipsModule,
+    GoogleMapsModule,
   ],
   providers: [SessionService],
   bootstrap: [AppComponent],

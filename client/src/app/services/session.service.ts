@@ -4,6 +4,8 @@ import { Book } from '../views/book-details/book-details.component.type';
 import { Movie } from '../views/movie-details/movie-details.component.type';
 import { Observable } from 'rxjs';
 import { environment } from './../../environments/environment';
+import { Library } from '../views/maps/library.component.type';
+import { Libraries } from '../views/maps/libraries.component.type';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +13,7 @@ import { environment } from './../../environments/environment';
 export class SessionService {
   currentBook: Book | null = null;
   currentMovie: Movie | null = null;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   setCurrentBook(book: Book) {
     this.currentBook = book;
@@ -49,4 +51,9 @@ export class SessionService {
     const url = `${environment.apiUrl}/users/db`;
     return this.http.post(url, data).toPromise();
   }
+
+  getLibraries(rating: Number){
+    return this.http.get<any>(`${environment.librariesUrl}?rating=${rating}`);
+  }
+
 }

@@ -28,5 +28,6 @@
             <mat-chip color="primary" *ngFor="let category of book.categories">{{category}}</mat-chip>
         </mat-chip-list>
     </div>
+    <a [routerLink]="['/maps']" >Find book</a>
 </div>
 <ng-template #elseBlock>No book found</ng-template>
