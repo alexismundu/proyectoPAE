@@ -1,6 +1,32 @@
-<div *ngIf="book; else elseBlock">
-    <h3>{{book.title}} Details</h3>
-    <p>{{book.description}}</p>
+<div *ngIf="book !== null; else elseBlock" class="container">
     <img src={{book.imageLink}}>
+    <div class="right-side-content">
+        <a href="{{book.previewLink}}" target="_blank">
+            <h1 class="title">{{book.title}} Details</h1>
+        </a>
+        <h3 *ngIf="book.description" class="description">{{book.description}}</h3>
+        <h3 *ngIf="book.publishedDate">Published date: <i>{{book.publishedDate}}</i></h3>
+        <h3 *ngIf="book.language">Language: <strong>{{book.language}}</strong></h3>
+        <h3>
+            <div class="rating">
+                <div *ngFor="let isStarFilled of rating">
+                    <div *ngIf="isStarFilled; else elseBlock">
+                        <mat-icon aria-hidden="false" aria-label="Star icon">start</mat-icon>
+                    </div>
+                    <ng-template #elseBlock>
+                        <mat-icon aria-hidden="false" aria-label="Outlined star icon">star_border</mat-icon>
+                    </ng-template>
+                </div>
+            </div>
+        </h3>
+        <div *ngIf="book.pageCount" class="pages">
+            <mat-icon aria-hidden="false" aria-label="Star icon">menu_book</mat-icon>
+            <h3 class="count">{{book.pageCount}}</h3>
+        </div>
+        <h3 *ngIf="book.authors.length">Authors: {{book.authors.join(', ')}}</h3>
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" *ngFor="let category of book.categories">{{category}}</mat-chip>
+        </mat-chip-list>
+    </div>
 </div>
 <ng-template #elseBlock>No book found</ng-template>
