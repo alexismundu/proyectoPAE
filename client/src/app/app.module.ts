@@ -19,7 +19,6 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClickDirective } from './directives/click.directive';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MapsComponent } from './views/maps/maps.component';
@@ -49,7 +48,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     MatIconModule,
     MatChipsModule,
     GoogleMapsModule,
