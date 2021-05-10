@@ -13,6 +13,7 @@ import { Movie } from 'src/app/views/movie-details/movie-details.component.type'
 export class MovieDetailsComponent implements OnInit {
   movie: Movie | null;
   movieIdFromRoute: string | null;
+  rating: boolean[] = [];
 
   constructor(private route: ActivatedRoute, private session: SessionService) {
     const routeParams = this.route.snapshot.paramMap;
@@ -20,10 +21,18 @@ export class MovieDetailsComponent implements OnInit {
     const currentMovie = this.session.getCurrentMovie();
     this.movie = currentMovie;
     if (this.movie === null)
-      this.session
-        .getMovie(this.movieIdFromRoute)
-        .subscribe((movie) => (this.movie = movie));
+      this.session.getMovie(this.movieIdFromRoute).subscribe((movie) => {
+        this.movie = movie;
+        this.calculateRating();
+      });
+    else this.calculateRating();
   }
 
   ngOnInit() {}
+
+  calculateRating() {
+    for (let i = 1; i <= 5; i += 1) {
+      this.rating.push(i <= this.movie.vote_average / 2);
+    }
+  }
 }

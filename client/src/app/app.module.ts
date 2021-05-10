@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClickDirective } from './directives/click.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatChipsModule,
   ],
   providers: [SessionService],
   bootstrap: [AppComponent],

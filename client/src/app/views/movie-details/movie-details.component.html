@@ -1,6 +1,26 @@
-<div *ngIf="movie; else elseBlock">
-    <h3>{{movie.title}} Details</h3>
-    <p>{{movie.overview}}</p>
+<div *ngIf="movie; else elseBlock" class="container">
     <img src={{movie.thumbnailURL}}>
+    <div class="right-side-content">
+        <h1 class="title">{{movie.title}} Details</h1>
+        <h3 class="description">{{movie.overview}}</h3>
+        <h3>Release date: <i>{{movie.release_date}}</i></h3>
+        <h3>Original language: <strong>{{movie.original_language}}</strong></h3>
+        <h3 *ngIf="movie.vote_average">
+            <div class="rating">
+                <div *ngFor="let isStarFilled of rating">
+                    <div *ngIf="isStarFilled; else elseBlock">
+                        <mat-icon aria-hidden="false" aria-label="Star icon">start</mat-icon>
+                    </div>
+                    <ng-template #elseBlock>
+                        <mat-icon aria-hidden="false" aria-label="Outlined star icon">star_border</mat-icon>
+                    </ng-template>
+                </div>
+            </div>
+        </h3>
+        <div class="likes">
+            <mat-icon aria-hidden="false" aria-label="Star icon">thumb_up</mat-icon>
+            <h3 class="count">{{movie.vote_count}}</h3>
+        </div>
+    </div>
 </div>
 <ng-template #elseBlock>No movie found</ng-template>
