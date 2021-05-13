@@ -1,0 +1,20 @@
+<div>
+    <div *ngFor="let movie of movies" class="content">
+        <a [title]="movie.title + ' details'" [routerLink]="['/movies', movie.id]" (click)="setCurrentMovie(movie)">
+            <div class="movie" *ngIf="movie">
+                <div class="movie-left">
+                    <img src={{movie.thumbnailURL}}>
+                </div>
+                <div class="movie-right">
+                    <h1>{{movie.title}}</h1>
+                    <h4><b>Release Date:</b> {{movie.release_date}}</h4>
+                    <h4><b>Rating:</b> {{movie.vote_average}}</h4>
+                    <h4><b>Popularity:</b> {{movie.popularity}}</h4>
+                    <h4><b>Language:</b> {{movie.original_language}}</h4>
+                    <!-- <h4 *ngIf="movie.categories" ><b>Categories:</b> {{movie.categories.join()}}</h4> -->
+                    <p *ngIf="movie.overview" class="description">{{movie.overview}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

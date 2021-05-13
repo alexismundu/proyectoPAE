@@ -8,9 +8,13 @@ import { MovieDetailsComponent } from './views/movie-details/movie-details.compo
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LoginComponent } from './components/login/login.component';
 import { MapsComponent } from './views/maps/maps.component';
+import { BooksSearchComponent } from './components/books-search/books-search.component';
+import { MoviesSearchComponent } from './components/movies-search/movies-search.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
+  { path: 'books-search/:keyword', component: BooksSearchComponent },
+  { path: 'movies-search/:keyword', component: MoviesSearchComponent },
   { path: 'books/:id', component: BookDetailsComponent },
   { path: 'maps', component: MapsComponent },
   { path: 'movies/:id', component: MovieDetailsComponent },

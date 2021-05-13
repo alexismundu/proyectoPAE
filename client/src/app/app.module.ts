@@ -23,6 +23,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MapsComponent } from './views/maps/maps.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { SearchComponent } from './components/search/search.component';
+import { BooksSearchComponent } from './components/books-search/books-search.component';
+import { MoviesSearchComponent } from './components/movies-search/movies-search.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +44,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     SignUpComponent,
     ClickDirective,
     MapsComponent,
+    SearchComponent,
+    BooksSearchComponent,
+    MoviesSearchComponent,
   ],
   imports: [
     BrowserModule,

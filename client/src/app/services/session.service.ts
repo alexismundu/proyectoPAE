@@ -56,4 +56,13 @@ export class SessionService {
     return this.http.get<any>(`${environment.librariesUrl}?rating=${rating}`);
   }
 
+  searchMovies(keyword) {
+    return this.http.get<any>(`${environment.apiUrl}/movies/api/${keyword}`);
+  }
+
+  searchBooks(keyword) {
+    console.log(keyword)
+    return this.http.get<any>(`${environment.apiUrl}/books/api/${keyword}`);
+  }
+
 }
